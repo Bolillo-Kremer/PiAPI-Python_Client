@@ -13,7 +13,7 @@ This library requires that [PiAPI](https://github.com/Bolillo-Kremer/PiAPI) is r
 
 ### Initializing
 Use this pip command to install the PiAPI package
-```sh
+```
 python -m pip install https://github.com/Bolillo-Kremer/PiAPI-Python_Client/blob/master/PiAPI-latest.whl?raw=true
 ```
 After installing package, you will need to setup you PiAPI connection like this.
