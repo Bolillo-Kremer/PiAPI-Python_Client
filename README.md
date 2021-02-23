@@ -12,8 +12,11 @@ For updates on this project and other other entertainging coding projects, pleas
 This library requires that [PiAPI](https://github.com/Bolillo-Kremer/PiAPI) is running on your raspberry pi. You can intall it on your pi with only one command! For instructions, [click here](https://github.com/Bolillo-Kremer/PiAPI/blob/master/README.md).
 
 ### Initializing
-You can either install the PiAPI nuget package or download PiAPI.dll by clicking [here](https://github.com/Bolillo-Kremer/PiAPI.NET/blob/master/PiAPI-latest.dll?raw=true).
-After downloading the nuget package, or adding a reference to this library in your project, you will need to setup you PiAPI connection like this.
+Use this pip command to install the PiAPI package
+```sh
+python -m pip install https://github.com/Bolillo-Kremer/PiAPI-Python_Client/blob/master/PiAPI-latest.whl?raw=true
+```
+After installing package, you will need to setup you PiAPI connection like this.
 
 ```py
 import PiAPI
