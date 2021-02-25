@@ -19,12 +19,12 @@ python -m pip install https://github.com/Bolillo-Kremer/PiAPI-Python_Client/blob
 After installing package, you will need to setup you PiAPI connection like this.
 
 ```py
-import PiAPI
+from PiAPI import Pi
 ```
 ```py
 
 #Initialize Pi object with IP address and port of pi
-my_pi = Pi("192.168.1.100", Pi.default_port())
+my_pi = Pi.New_Pi("192.168.1.100", Pi.default_port())
 
 #You need to specify which pins will be set as input or output
 my_pi.init_pin(2, "in")
@@ -88,15 +88,15 @@ If you need help, you can use the helper module like this
 
 
 ```py
-import PiAPI
-from Helpers import Pin
+from PiAPI import Pi
+from PiAPI.Helpers import Pin
 
 #Initialize Pi object with IP address and port of pi
-my_pi = Pi("192.168.1.100", Pi.default_port())
+my_pi = Pi.New_Pi("192.168.1.100", Pi.default_port())
 
 #You need to specify which pins will be set as input or output
-my_pi.init_pin(2, _in())
-my_pi.init_pin(3, out())
+my_pi.init_pin(2, Pin.in_())
+my_pi.init_pin(3, Pin.out())
 ```
 
 
