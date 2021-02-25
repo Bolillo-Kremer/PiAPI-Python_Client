@@ -1,12 +1,11 @@
 import requests
 import json
-from Helpers.Pin import Pin
+from PiAPI.Helpers import Pin
 
-class Pi:
+class New_Pi:
     __ip_address = ""
     __port = -1
     __url_override = ""
-    __default_port = 5000
 
     def __init__(self, address, port = -1):
         if (port != -1):
@@ -14,12 +13,8 @@ class Pi:
             self.__port = port
         else:
             self.__url_override = address
-   
-    @classmethod
-    def default_port(cls):
-        return cls.__default_port
 
-    def raw_url(self):
+    def raw_url(self) -> str:
         url = ""
         if (self.__ip_address != ""):
             url += "http://" + self.__ip_address
@@ -32,7 +27,7 @@ class Pi:
         if not (self.__ip_address != "" or self.__url_override != ""):
             raise Exception("API url not provided")
 
-    def init_pin(self, pin, direction, edge = None, edgeTimeout = -1):
+    def init_pin(self, pin: int, direction: str, edge: str = None, edgeTimeout: int = -1):
         self.__check_url()
         url = self.raw_url() + "/InitPin"
 
@@ -49,19 +44,19 @@ class Pi:
         
         return requests.post(url, json.dumps(pin_settings)).text
 
-    def unexport_pin(self, pin):
+    def unexport_pin(self, pin: int) -> str:
         self.__check_url()
         url = self.raw_url() + "/Unexport"
 
         return requests.post(url, str(pin)).text
 
-    def clean_exit(self):
+    def clean_exit(self) -> str:
         self.__check_url()
         url = self.raw_url() + "/CleanExit"
 
         return requests.get(url).text
 
-    def set_state(self, pin, state):
+    def set_state(self, pin: int, state: int) -> str:
         self.__check_url()
         url = self.raw_url() + "/SetState"
 
@@ -72,7 +67,7 @@ class Pi:
 
         return requests.post(url, json.dumps(pin_settings)).text
 
-    def set_all_states(self, state):
+    def set_all_states(self, state: int) -> str:
         self.__check_url()
         url = self.raw_url() + "/SetState"
 
@@ -83,25 +78,25 @@ class Pi:
 
         return requests.post(url, json.dumps(pin_settings)).text
 
-    def get_state(self, pin):
+    def get_state(self, pin: int) -> int:
         self.__check_url()
         url = self.raw_url() + "/GetState"
 
         return int(requests.post(url, str(pin)).text)
 
-    def get_all_states(self):
+    def get_all_states(self) -> dict:
         self.__check_url()
         url = self.raw_url() + "/GetState"
 
-        return requests.post(url, Pin.all()).text
+        return json.loads(requests.post(url, Pin.all()).text)
 
-    def active_pins(self):
+    def active_pins(self) -> dict:
         self.__check_url()
         url = self.raw_url() + "/ActivePins"
 
-        return requests.get(url).text
+        return json.loads(requests.get(url).text)
     
-    def command(self, command):
+    def command(self, command: str):
         self.__check_url()
         url = self.raw_url() + "/Command"
 
@@ -130,18 +125,23 @@ class Pi:
             "val": json.dumps(setting_value)
         }
 
-        return requests.post(url, json.dumps(setting)).text
+        return json.loads(requests.post(url, json.dumps(setting)).text)
 
-    def get_setting(self, setting_name):
+    def get_setting(self, setting_name: str):
         self.__check_url()
         url = self.raw_url() + "/GetSetting"
 
         return requests.post(url, setting_name).text
 
-    def set_api_port(self, port):
+    def set_api_port(self, port: int):
         return self.set_setting("port", port)
 
     def api_port(self):
         return self.get_setting("port")
 
-print(Pin.out())
+#Module
+
+__default_port = 5000
+
+def default_port() -> int:
+    return __default_port

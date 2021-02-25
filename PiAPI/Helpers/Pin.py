@@ -1,34 +1,24 @@
-class Pin:
+__in = "in"
+__out = "out"
+__all = "*"
+__high = 1
+__low = 0
+__toggle = -1
 
-    __in = "in"
-    __out = "out"
-    __all = "*"
-    __high = 1
-    __low = 0
-    __toggle = -1
+def in_() -> str:
+    return __in
 
-    @classmethod
-    def in_(cls):
-        return cls.__in
+def out() -> str:
+    return __out
 
-    @classmethod
-    def out(cls):
-        return cls.__out
+def high() -> int:
+    return __high
 
-    @classmethod
-    def high(cls):
-        return cls.__high
+def low() -> int:
+    return __low
 
-    @classmethod
-    def low(cls):
-        return cls.__low
+def toggle() -> int:
+    return __toggle
 
-    @classmethod
-    def toggle(cls):
-        return cls.__toggle
-
-    @classmethod
-    def all(cls):
-        return cls.__all
-
-
+def all() -> int:
+    return __all

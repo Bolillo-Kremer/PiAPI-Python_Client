@@ -1,11 +1,18 @@
 import setuptools
+import os
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+thelibFolder = os.path.dirname(os.path.realpath(__file__))
+requirementPath = thelibFolder + '/requirements.txt'
+install_requires = []
+if os.path.isfile(requirementPath):
+    with open(requirementPath) as f:
+        install_requires = f.read().splitlines()
 setuptools.setup(
-    name="PiAPI", # Replace with your own username
-    version="0.0.1",
+    name="PiAPI",
+    version="0.0.2",
     author="Bolillo Kremer",
     author_email="author@example.com",
     description="This package allows you to easily interface with PiAPI",
@@ -19,4 +26,5 @@ setuptools.setup(
     ],
     packages=setuptools.find_packages(),
     python_requires='>=3.6',
+    install_requires=install_requires
 )

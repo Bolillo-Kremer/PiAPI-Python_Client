@@ -1,11 +1,8 @@
-class Pull:
-    __up = "up"
-    __down = "down"
+__up = "up"
+__down = "down"
 
-    @classmethod
-    def up(cls):
-        return cls.__up
+def up() -> str:
+    return __up
 
-    @classmethod
-    def down(cls):
-        return cls.__down
+def down() -> str:
+    return __down
