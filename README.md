@@ -1,4 +1,4 @@
-# PiAPI .NET Library
+# PiAPI Python Client Library
 ##### [Bolillo Kremer](https://youtube.com/BolilloKremer?https://www.youtube.com/BolilloKremer?sub_confirmation=1)
 
 ## Overview
